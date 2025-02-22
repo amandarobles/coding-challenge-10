@@ -81,7 +81,7 @@ inventory.listProducts();
 inventory.placeOrder(601, prod1, 2);
 inventory.listOrders();
 //Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
-console.log(prod1,getDetails());
+console.log(prod1.getDetails());
 //Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
 
 // task 5: Implementing Product Restocking
