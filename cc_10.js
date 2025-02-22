@@ -44,6 +44,7 @@ console.log(prod1.getDetails());
 class Inventory {
     constructor() {
         this.products = []; //creating inventory class with property array
+        this.orders = []; //task 4- adding orders array in inventory class
     };
     addProduct(product) {
         this.products.push(product); //adding new product to inventory
@@ -51,9 +52,28 @@ class Inventory {
     listProducts() {
         return this.products.forEach(product => console.log(product.getDetails())); //logging products' details
     };
+    placeOrder(orderId, product, quantity) {
+        if(product.stock >= quantity) {
+            let order = new Order(orderId, product, quantity);
+            this.orders.push(order);
+        } else {
+            return `Insufficient stock! Stock of ${product.name} is currently ${product.stock}`;
+        }; // task 4- creating new order and adding it to orders if stock is available
+    };
+    listOrders() {
+        this.orders.forEach(order => console.log(order.getOrderDetails())); // task 4- logging all placed orders
+    };
 }
 //test data
 const inventory = new Inventory();
 inventory.addProduct(prod1);
 inventory.listProducts();
 //Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5"
+
+// task 4: Implementing Order Management
+//test data
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders();
+//Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
+console.log(prod1,getDetails());
+//Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
